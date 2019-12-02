@@ -1,6 +1,11 @@
 /* CSS Reset */
-body, p  {
+body, p, h1, h2, h3, ul {
 	margin: 0;
+	padding: 0;
+}
+
+li {
+	list-style-type: none;	
 }
 
 a {
@@ -9,14 +14,23 @@ a {
 }
 
 /* Typograph */
+html {
+	font-family: sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	font-size: 100%;
+}
 
 /* Util */
 .mb_5 { margin-bottom: 5px; }
 
 /* Layouts */
 .l_wrapper {
-	width: 960px;
+	max-width: 960px;
 	margin: 0 auto;
+	padding: 0 20px;
 }
 
 .l_sidebar {
@@ -29,14 +43,32 @@ a {
 	overflow: hidden;
 }
 
+.l_row {
+	/* background-color: antiquewhite; */
+	margin: 0 -10px;
+}
+
+.l_col {
+	/* background-color: orange;	 */
+	float: left;
+	width: 20%;
+	padding: 0 10px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+}
+
 
 /* Commons */
+/* 부모와 자식간 마진겹침현상을 해결하기 위한 팁 */
+.clearfix:before,
 .clearfix:after {
 	content: ' ';
 	display: table;
+	clear: both;
 }
 
 .star {
+	display: inline-block;
 }
 
 .star,
@@ -139,12 +171,144 @@ body {
 }
 
 .course-cover {
+	background-size: cover;
+	background-position: center;
 	background-image: url(images/cover.png);
+	padding: 30px;
+	position: relative;
 }
 
+.course-cover:after {
+	content: ' ';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: -moz-linear-gradient(top,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%);
+background: -webkit-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
+background: linear-gradient(to bottom,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=0 );
+
+}
+
+.course-creator,
+.course-title {
+	position: relative;
+	z-index: 10;
+}
+
+.course-creator {
+	float: right;
+	margin-left: 10px;
+	width: 100px;
+	text-align: right;
+}
+
+.course-creator-logo {
+	width: 50px;
+	border-radius: 50%;
+}
+
+.course-creator-contents {
+	padding: 5px 0;
+}
+
+.course-creator-contents strong {
+	display: block;
+}
+
+.course-title {
+	overflow: hidden;
+}
+
+.course-title h1 {
+	color: white;
+	font-size: 50px;
+	line-height: 1.1;
+	font-weight: bold;
+	margin-bottom: 20px;
+	text-transform: uppercase;
+	font-family: 'Bebas Neue', cursive;
+}
+
+.course-title p {
+	margin-bottom: 20px;
+}
+
+
 .course-section {
-	background-color: orange;
 	margin: 20px 0;
+}
+
+.course-section h2 {
+	font-size: 30px;
+	color: #999;
+	border-bottom: 2px solid;
+	margin-bottom: 20px;
+}
+
+.course-section-contents {
+	
+}
+
+.curriculum {
+}
+
+.curriculum-item {
+	background-color: #333;
+	margin-bottom: 10px;
+}
+
+.curriculum-item:last-child {
+	margin-bottom: 0;
+}
+
+.curriculum-item h3 {
+	margin: 10px 20px;
+}
+
+.curriculum-item-list {
+	background-color: #0e0e0e;
+	padding: 20px 0;
+	margin: 5px;
+}
+
+.curriculum-link {
+	background-color: rgba(255,255,255,0.05);
+	display: block;
+	margin: 5px 20px;
+	padding: 10px;
+}
+
+.curriculum-link:before {
+	content: ' ';
+	width: 0;
+	height: 0;
+	border-width: 4px 10px;
+	border-style: solid;
+	border-color: transparent transparent transparent currentColor;
+	display: inline-block;
+	transform: translateY(-2px);
+}
+
+.curriculum-link:hover {
+	color: white;
+}
+
+.curriculum-link span {
+	float: right;
+	font-size: 10px;
+}
+
+/* Item */
+.item {
+	background-color: dodgerblue;
+}
+
+.item-cover{
+	width: 100%;
+	display: block;
 }
 
 .footer {
@@ -153,10 +317,40 @@ body {
 
 
 /* Mediaqueries */
-@media ( max-width: 960px  ) {
-
+@media ( max-width: 768px  ) {
+	.l_sidebar {
+		width: auto;
+		float: none;
+		margin-left: 0;
+	}
+	.l_col{
+		width: 33.3333%;
+	}
 } 
 
 @media ( max-width: 480px  ) {
-
+	.course-cover {
+		text-align: center;
+	}
+	.course-creator {
+		float: none;
+		margin: 0;
+		width: auto;
+		text-align: center;
+	}
+	.curriculum-link span {
+		display: none;
+	}
 } 
+
+
+
+
+
+
+
+
+
+
+
+
